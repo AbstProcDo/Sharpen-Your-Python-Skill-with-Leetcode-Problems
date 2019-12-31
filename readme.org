@@ -1,0 +1,19 @@
+王小波在<人性的逆转>中写道:
+
+> "追求聪明是一种人生态度";
+
+在<智慧与国学>中, 他又阐述道:
+
+> 我觉得西方的智者有一股不管三七二十一，总要把自己往聪明里弄的劲头儿。
+
+断断续续从Leetcode中刷了1000多道题目, 
+
+题干与不同的解法(py)按照算法分类归入到一个org file里作为数据库.
+
+比如前1000道题目中有三道素数题
+
+Sacha Chua的三字立身哲学: learn--> share--> scale
+
+https://sachachua.com/blog/2012/11/coming-up-with-a-three-word-life-philosophy/
+
+So learn by sharing.
