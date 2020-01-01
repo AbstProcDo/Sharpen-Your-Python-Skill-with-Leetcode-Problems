@@ -1,19 +1,86 @@
+* 引言,追求聪明的人生态度
+# 写给2020的情书.
 王小波在<人性的逆转>中写道:
+#+BEGIN_QUOTE
+"追求聪明是一种人生态度";
+#+END_QUOTE
+在<智慧与国学>中, 又阐述道:
+#+BEGIN_QUOTE
+我觉得西方的智者有一股不管三七二十一，总要把自己往聪明里弄的劲头儿。
+#+END_QUOTE
 
-> "追求聪明是一种人生态度";
-
-在<智慧与国学>中, 他又阐述道:
-
-> 我觉得西方的智者有一股不管三七二十一，总要把自己往聪明里弄的劲头儿。
+以上......
+为练习算法的缘起.
 
 断断续续从Leetcode中刷了1000多道题目, 
 
-题干与不同的解法(py)按照算法分类归入到一个org file里作为数据库.
+因为有Emacs'org这样的高效工具, 过程中, 得以题干及解法(py)分类归档, 随时备查备用.
 
 比如前1000道题目中有三道素数题
+#+ATTR_HTML: :width 300px
+[[file:images/prime-2020-01-01.png]]
+
+以及多道二分查找题目:
+#+ATTR_HTML: :width 300px
+[[file:images/bs-2020-01-01.png]]
 
 Sacha Chua的三字立身哲学: learn--> share--> scale
 
 https://sachachua.com/blog/2012/11/coming-up-with-a-three-word-life-philosophy/
 
 So learn by sharing.
+
+文档结构, 宏观二分为算法和数据结构, 先从算法的Binary Search开始, 采用螺旋交叉的方法, 每种算法与每种数据结构, 列5~10道题, 至少5道,至多10道; 然后进入下一个算法或者数据结构;循环一轮过后, 进入第二轮.
+
+* Algorithms.Binary.Search
+解题不能用蛮力, 不然练一万道题目也无济于事.
+从审题到测试,分为四步走, Sort, Strategy, Solve and Check,
+四步科学解题以及任何问题的步骤.
+Sort是将题干中所有的条件都列出来, 其余的后文陆续分享.
+
+** [[278.First Bad Version #easy]]                          :easy:binary_search:
+*** Reference
+- [First Bad Version - LeetCode](https://leetcode.com/problems/first-bad-version/)
+*** Question
+You are a product manager and currently leading a team to develop a new product. Unfortunately, the latest version of your product fails the quality check. Since each version is developed based on the previous version, all the versions after a bad version are also bad.
+Suppose you have n versions [1, 2, ..., n] and you want to find out the first bad one, which causes all the following ones to be bad.
+You are given an API bool isBadVersion(version) which will return whether version is bad. Implement a function to find the first bad version. You should minimize the number of calls to the API.
+#+BEGIN_EXAMPLE
+  Given n = 5, and version = 4 is the first bad version.
+
+  call isBadVersion(3) -> false
+  call isBadVersion(5) -> true
+  call isBadVersion(4) -> true
+
+  Then 4 is the first bad version.
+#+END_EXAMPLE
+
+*** Solution
+分析题目: 第一步Sort:
+1) Given(已知条件)
+- an API bool isBadVersion(version)
+- n versions [1, 2, ..., n]
+2) Find(要求得的结果)
+to find the first bad version.
+3) Requirements(有哪些要求和限制)
+You should minimize the number of calls to the API.
+# 就是求最优算法呗, 说了等于没说.
+列出来之后, 可以就直接套模板.
+
+#+BEGIN_SRC ipython :session leetcode 
+  class Solution:
+      def firstBadVersion(self, n):
+          """
+          :type n: int
+          :rtype: int
+          """
+          lo = 1
+          hi = n -1
+          while lo < hi:
+              mid = (lo+hi) // 2
+              if not isBadVersion(mid): # good
+                  lo = mid + 1
+              else:
+                  hi = mid
+          return lo
+#+END_SRC
