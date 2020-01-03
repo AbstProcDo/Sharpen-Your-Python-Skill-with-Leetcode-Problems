@@ -17,13 +17,9 @@
 因为有Emacs'org这样的高效工具, 过程中, 得以题干及解法(py)分类归档, 随时备查备用.
 
 比如前1000道题目中有三道素数题
-#+ATTR_HTML: :width 300px
-[[file:images/prime-2020-01-01.png]]
+
 
 以及多道二分查找题目:
-#+ATTR_HTML: :width 300px
-[[file:images/bs-2020-01-01.png]]
-
 Sacha Chua的三字立身哲学: learn--> share--> scale
 
 https://sachachua.com/blog/2012/11/coming-up-with-a-three-word-life-philosophy/
@@ -38,9 +34,7 @@ So learn by sharing.
 四步科学解题以及任何问题的步骤.
 Sort是将题干中所有的条件都列出来, 其余的后文陆续分享.
 
-** [[278.First Bad Version #easy]]                          :easy:binary_search:
-*** Reference
-- [First Bad Version - LeetCode](https://leetcode.com/problems/first-bad-version/)
+** [[https://leetcode.com/problems/first-bad-version/][278.First Bad Version]]                                :easy:binary_search:
 *** Question
 You are a product manager and currently leading a team to develop a new product. Unfortunately, the latest version of your product fails the quality check. Since each version is developed based on the previous version, all the versions after a bad version are also bad.
 Suppose you have n versions [1, 2, ..., n] and you want to find out the first bad one, which causes all the following ones to be bad.
@@ -86,7 +80,6 @@ You should minimize the number of calls to the API.
 #+END_SRC
 
 # Private, 从mit那里学来的f(x)=0的关系,
-
 * Reverse
 ** [[https://leetcode.com/problems/reverse-string/][344.Reverse String]] :easy:
 
