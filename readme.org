@@ -12,7 +12,7 @@
 以上......
 为练习算法的缘起.
 
-断断续续从Leetcode中刷了1000多道题目, 
+断断续续从Leetcode中刷了1000多道题目,
 
 因为有Emacs'org这样的高效工具, 过程中, 得以题干及解法(py)分类归档, 随时备查备用.
 
@@ -31,8 +31,7 @@ https://sachachua.com/blog/2012/11/coming-up-with-a-three-word-life-philosophy/
 So learn by sharing.
 
 文档结构, 宏观二分为算法和数据结构, 先从算法的Binary Search开始, 采用螺旋交叉的方法, 每种算法与每种数据结构, 列5~10道题, 至少5道,至多10道; 然后进入下一个算法或者数据结构;循环一轮过后, 进入第二轮.
-
-* Algorithms.Binary.Search
+* Binary.Search
 解题不能用蛮力, 不然练一万道题目也无济于事.
 从审题到测试,分为四步走, Sort, Strategy, Solve and Check,
 四步科学解题以及任何问题的步骤.
@@ -67,11 +66,11 @@ You should minimize the number of calls to the API.
 # 就是求最优算法呗, 说了等于没说.
 列出来之后, 可以就直接套模板.
 
-#+BEGIN_SRC ipython :session leetcode 
+#+BEGIN_SRC ipython :session leetcode
   class Solution:
       def firstBadVersion(self, n):
           """
-          :type n: int
+          :type n: intx
           :rtype: int
           """
           lo = 1
@@ -84,3 +83,147 @@ You should minimize the number of calls to the API.
                   hi = mid
           return lo
 #+END_SRC
+
+# Private, 从mit那里学来的f(x)=0的关系,
+* Reverse
+** [[https://leetcode.com/problems/reverse-string/][344.Reverse String]] :easy:
+
+*** Question:
+Write a function that reverses a string. The input string is given as an array of characters char[].
+
+Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.
+
+You may assume all the characters consist of printable ascii characters.
+
+*** Solution
+#+begin_src python
+class Solution:
+    def reverseString(self, s: List[str]) -> None:
+        """
+        Do not return anything, modify s in-place instead.
+        """
+        start, stop = 0, len(s)-1
+        while start < stop:
+            s[start], s[stop] = s[stop], s[start]
+            start += 1
+            stop -= 1
+#+end_src
+
+** [[https://leetcode.com/problems/reverse-words-in-a-string/][151.Reverse Words in a String]]  :easy:
+*** Question
+Given an input string, reverse the string word by word.
+*** Solution
+#+begin_src python
+class Solution:
+    def reverseWords(self, s: str) -> str:
+        r = s.split()
+        r.reverse()
+        return ' '.join(r)
+#+end_src
+
+** [[https://leetcode.com/problems/reverse-words-in-a-string-iii/][557.Reverse Words in a String III]] :easy:
+*** Question
+Given a string, you need to reverse the order of characters in each word within a sentence while still preserving whitespace and initial word order.
+
+#+BEGIN_EXAMPLE
+Example 1:
+
+Input: "Let's take LeetCode contest"
+Output: "s'teL ekat edoCteeL tsetnoc"
+#+END_EXAMPLE
+
+Note: In the string, each word is separated by single space and there will not be any extra space in the string.
+
+*** Solution
+#+begin_src ipython
+class Solution1:
+    def reverseWords(self, s: str) -> str:
+        s = s[::-1]
+        s = s.split()
+        s = s[::-1]
+        s = " ".join(s)
+        return s
+# Standard solution
+class Solution2:
+    def rev(self, s, start, end):
+        while(start < end):
+            temp = s[start]
+            s[start] = s[end]
+            s[end] = temp
+            start += 1
+            end -= 1
+# exchange positions
+    def reverseWords(self, s: str) -> str:
+        n = len(s)
+        if n <= 1:
+            return s
+
+        s = list(s)
+        word_start = 0
+
+        for word_end in range(n):
+            if s[word_end]  == " ":
+                self.rev(s, word_start, word_end - 1)
+                word_start = word_end + 1
+
+        self.rev(s, word_start, n - 1)
+        return "".join(s)
+#+end_src
+
+** [[https://leetcode.com/problems/reverse-linked-list/][206.Reverse Linked List]] :easy:
+*** Question:
+Reverse a singly linked list.
+
+#+BEGIN_EXAMPLE
+Example:
+Input: 1->2->3->4->5->NULL
+Output: 5->4->3->2->1->NULL
+#+END_EXAMPLE
+
+Follow up:
+A linked list can be reversed either iteratively or recursively. Could you implement both?
+
+*** The Solution
+
+#+begin_src python
+#iteration
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.next = None
+#a clear solution
+# 脑中始终有三个概念
+class Solution1:
+    def reverseList(self, head: 'ListNode') -> 'ListNode':
+        cur= head # explict declare
+        nex= prev = None
+        # 找到nex
+        while cur != None:
+            nex = cur.next # remember the next
+            cur.next = prev # relink to prev
+            prev = cur # reset prev
+            cur= nex  # move to the next
+        head = prev
+        return head
+
+#Recursion
+class Solution2:
+    def reverseList(self, head: ListNode) -> ListNode:
+        if head == None or head.next == None: return head
+        prev = self.reverseList(head.next)
+        head.next.next = head
+        head.next = None
+        return prev
+#+end_src
+** 总结
+特殊的置换方法
+#+begin_src ipython :session leetcode :results output
+def rev(self, s, start, end):
+    while(start < end):
+        temp = s[start]
+        s[start] = s[end]
+        s[end] = temp
+        start += 1
+        end -= 1
+#+end_src
