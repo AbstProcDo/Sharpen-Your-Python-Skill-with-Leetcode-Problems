@@ -31,7 +31,8 @@ https://sachachua.com/blog/2012/11/coming-up-with-a-three-word-life-philosophy/
 So learn by sharing.
 
 文档结构, 宏观二分为算法和数据结构, 先从算法的Binary Search开始, 采用螺旋交叉的方法, 每种算法与每种数据结构, 列5~10道题, 至少5道,至多10道; 然后进入下一个算法或者数据结构;循环一轮过后, 进入第二轮.
-* Binary.Search
+
+* binary.Search
 解题不能用蛮力, 不然练一万道题目也无济于事.
 从审题到测试,分为四步走, Sort, Strategy, Solve and Check,
 四步科学解题以及任何问题的步骤.
@@ -85,6 +86,7 @@ You should minimize the number of calls to the API.
 #+END_SRC
 
 # Private, 从mit那里学来的f(x)=0的关系,
+
 * Reverse
 ** [[https://leetcode.com/problems/reverse-string/][344.Reverse String]] :easy:
 
